@@ -1,30 +1,90 @@
-import React from 'react';
-import { Link, useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import './styles.css';
-import { FiCornerDownLeft, FiUserPlus} from 'react-icons/fi';
+import { FiCornerDownLeft, FiUserPlus } from 'react-icons/fi';
+import api from '../../services/api';
 
-export default function NovoAluno(){
+export default function NovoAluno() {
 
-  const {alunoId} = useParams();
-  
-    return(
-        <div className="novo-aluno-container">
-           <div className="content">
-                <section className="form">
-                  <FiUserPlus size="105" color="#17202a" />
-                  <h1>{alunoId === '0'?'Incluir Novo Aluno':'Atualizar Aluno'}</h1>
-                  <Link className='back-link' to="/alunos">
-                    <FiCornerDownLeft size='35' color="#17202a" />
-                    Retornar
-                  </Link>
-                </section>
-                <form>
-                  <input  placeholder="Nome" />
-                  <input  placeholder="Email" />
-                  <input  placeholder="Idade" />
-                  <button className="button" type="submit">{alunoId === '0'? 'Incluir' : 'Atualizar'}</button>
-                </form>
-           </div>
-        </div>
-    );
+  //const [id, setId] = useState(null);
+  const [ds_descricao, setDs_descricao] = useState('');
+
+  const { alunoId } = useParams();
+  const navigate = useNavigate();
+
+  const token = localStorage.getItem('token');
+  const authorization = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }
+
+  useEffect(() => {
+    if (alunoId === '0')
+      return;
+    else
+      loadAluno();
+  }, alunoId)
+
+  async function loadAluno() {
+    try {
+      const response = await api.get(`/v1/GetCategoriaId/${alunoId}`, authorization);
+
+      //setId(response.data.Id);
+      setDs_descricao(response.data.ds_descricao);
+
+    } catch (error) {
+      alert('erro ao recuperar o aluno' + error);
+      navigate('/alunos');
+    }
+  }
+
+  async function saveOrUpdate(event) {
+    event.preventDefault();
+
+    const data = {
+      ds_descricao
+    }
+
+    try{
+      if(alunoId==='0')
+      {
+         await api.post('/v1/CreateCategoria',data,authorization);
+      }
+      else
+      {
+         data.id= alunoId;
+         console.log("httpPut");
+         console.log(alunoId);
+         await api.put(`/v1/UpdateCategoria/${alunoId}`,data,authorization)
+      }
+    }catch(error){
+       alert('Erro ao gravar aluno ' + error);
+    }
+    navigate('/alunos');
+}
+
+
+  return (
+    <div className="novo-aluno-container">
+      <div className="content">
+        <section className="form">
+          <FiUserPlus size="105" color="#17202a" />
+          <h1>{alunoId === '0' ? 'Incluir Novo Aluno' : 'Atualizar Aluno'}</h1>
+          <Link className='back-link' to="/alunos">
+            <FiCornerDownLeft size='35' color="#17202a" />
+            Retornar
+          </Link>
+        </section>
+        <form onSubmit={saveOrUpdate}>
+          <input placeholder="Nome"
+            value={ds_descricao}
+            onChange={e => setDs_descricao(e.target.value)}
+          />
+
+          <button className="button" type="submit">{alunoId === '0' ? 'Incluir ' : 'Atualizar '}</button>
+        </form>
+      </div>
+    </div>
+  );
 }
