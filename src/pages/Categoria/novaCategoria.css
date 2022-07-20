@@ -1,4 +1,4 @@
-.novo-aluno-container {
+.nova-categoria-container {
     width: 100%;
     max-width: 1120px;
     height: 100vh;
@@ -9,7 +9,7 @@
     justify-content: space-between;
 }
 
-.novo-aluno-container .content {
+.nova-categoria-container .content {
     width: 100%;
     padding: 96px;
     background: #F0F0F5;
@@ -22,40 +22,40 @@
 
 }
 
-.novo-aluno-container .content section {
+.nova-categoria-container .content section {
     width: 100%;
     max-width: 380px;
 }
 
-.novo-aluno-container section.form{
+.nova-categoria-container section.form{
     width: 100%;
     max-width: 350px;
     margin-right: 30px;
 }
 
-.novo-aluno-container section.form img {
+.nova-categoria-container section.form img {
     width: 45%;
     margin-left: auto;
     margin-right: auto;
     display: block;
 }
 
-.novo-aluno-container .content section h1{
+.nova-categoria-container .content section h1{
     margin: 64px 0 32px;
     font-size: 32px;
 }
 
-.novo-aluno-container .content section p {
+.nova-categoria-container .content section p {
     font-size: 18px;
     color: #737380;
     line-height: 32px;
 }
 
-.novo-aluno-container .content form {
+.nova-categoria-container .content form {
     width: 100%;
     max-width: 450px;
 }
 
-.novo-aluno-container .content form input {
+.nova-categoria-container .content form input {
     margin-top: 8px;
 }
