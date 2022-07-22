@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './despesa.css';
 import api from '../../services/api';
+import DateRangePickerComp from '../../components/DateRangePickerComp';
 
 export default function Despesa() {
 
@@ -28,10 +29,24 @@ const [data, setData]= useState([]);
 
     return (
         <div>
-            <h1>Relação de despesas</h1>
+            
             <header>
-                <button>Incluir Nova Despesa</button>
+                <div>
+                <h1>Relação de despesas</h1>
+                </div>
+                <div>
+                <button className='btn'>Incluir Nova Despesa</button>
+                </div>
             </header>
+            <form>
+                <div>
+                <DateRangePickerComp />
+                </div>
+                <div>
+                <button className='btn'>Pesquisar despesas </button>
+                </div>
+            </form>
+            <br/>
             <table>
                 <thead>
                     <tr>
