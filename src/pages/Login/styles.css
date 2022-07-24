@@ -1,7 +1,7 @@
 .login_container {
     width: 100%;
     max-width: 900px;
-    height: 90vh;
+    min-height: 90vh;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -34,4 +34,3 @@
     width: 80%;
     height: auto;
 }
-

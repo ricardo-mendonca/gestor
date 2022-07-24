@@ -1,11 +1,36 @@
-.home-container {
-    width: 800%;
-    max-width: 120px;
-    height: 80vh;
+.despesa_container {
+    width: 100%;
+    max-width: 1200px;
+    min-height: 90vh;
     margin: 0 auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    
+    
+}
+/*
+.despesa_container section.form{
+    width: 100%;
+    max-width: 350px;
+    margin-right: 30px;
 }
 
+.despesa_container section.form img{
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.despesa_container section.form form {
+    margin-top: 5px;
+}
+
+.despesa_container section.form form h1{
+    font-size:32px;
+    margin-bottom: 32px;
+}
+
+#img1{
+    width: 80%;
+    height: auto;
+}
+*/
