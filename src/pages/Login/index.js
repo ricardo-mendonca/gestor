@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './styles.css';
 import api from '../../services/api';
 import { useNavigate } from 'react-router-dom';
-
+import { Button } from 'react-bootstrap';
 import logoImage from '../../assets/login.png';
 
 export default function Login() {
@@ -42,7 +42,11 @@ export default function Login() {
                         value={ds_senha}
                         onChange={e => setPassword(e.target.value)}
                     />
-                    <button className="button" type="submit">Login</button>
+                    <div className="d-grid gap-2">
+                        <br/>
+                    <Button variant="primary" size="lg" type="submit">Login</Button>
+                    </div>
+                    
                 </form>
             </section>
         </div>
